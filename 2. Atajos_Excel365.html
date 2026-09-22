@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atajos de Teclado – Excel 365 | SENA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --excel: #217346;
+  --excel-claro: #2ecc71;
+  --sena-verde: #39a900;
+  --texto: #1a1a2e;
+  --texto-dim: #4a5568;
+  --texto-dimmer: #718096;
+  --bg: #f8fafc;
+  --borde: #e2e8f0;
+  --cat1: #217346;
+  --cat2: #2b579a;
+  --cat3: #8b5cf6;
+  --cat4: #e67e22;
+  --cat5: #c0392b;
+  --cat6: #0891b2;
+  --cat7: #f59e0b;
+  --cat8: #27ae60;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; overflow-x:hidden; }
+
+.topbar { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--borde); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 8px rgba(0,0,0,0.05); flex-wrap:wrap; gap:10px; }
+.topbar-left { display:flex; align-items:center; gap:12px; }
+.sena-logo { background:var(--sena-verde); color:#fff; font-weight:900; font-size:15px; padding:6px 13px; border-radius:8px; letter-spacing:1px; }
+.topbar-brand { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; }
+.topbar-sub { font-size:11px; color:var(--texto-dimmer); margin-top:1px; }
+.topbar-nav { display:flex; gap:14px; flex-wrap:wrap; }
+.topbar-nav a { text-decoration:none; font-size:12px; font-weight:600; color:var(--texto-dimmer); transition:color .2s; white-space:nowrap; }
+.topbar-nav a:hover { color:var(--excel); }
+
+.hero { background:linear-gradient(135deg,#0a1f12 0%,#0d2b1a 55%,#143d24 100%); padding:56px 20px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; width:500px; height:500px; background:var(--excel); border-radius:50%; top:-250px; left:-120px; opacity:0.2; filter:blur(80px); }
+.hero::after { content:''; position:absolute; width:350px; height:350px; background:var(--excel-claro); border-radius:50%; bottom:-180px; right:-80px; opacity:0.12; filter:blur(70px); }
+.hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(33,115,70,0.2); border:1px solid rgba(46,204,113,0.3); color:#6ee68a; padding:7px 18px; border-radius:30px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; position:relative; z-index:1; }
+.hero h1 { font-family:'Syne',sans-serif; font-size:clamp(28px,6vw,54px); font-weight:800; color:#fff; line-height:1.15; margin-bottom:14px; position:relative; z-index:1; }
+.hero h1 span { background:linear-gradient(135deg,#6ee68a,var(--excel-claro)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-desc { font-size:clamp(14px,2vw,17px); color:rgba(255,255,255,0.7); max-width:560px; margin:0 auto 28px; position:relative; z-index:1; }
+
+.stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; position:relative; z-index:1; }
+.stat { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:14px 24px; text-align:center; backdrop-filter:blur(8px); }
+.stat-num { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#fff; display:block; }
+.stat-label { font-size:12px; color:rgba(255,255,255,0.6); }
+
+.buscador-wrap { max-width:1000px; margin:36px auto 0; padding:0 20px; }
+.buscador { display:flex; align-items:center; gap:10px; background:#fff; border:2px solid var(--borde); border-radius:12px; padding:10px 16px; transition:border-color .2s; }
+.buscador:focus-within { border-color:var(--excel); }
+.buscador span { font-size:18px; }
+.buscador input { border:none; outline:none; font-size:14px; color:var(--texto); font-family:'Inter',sans-serif; width:100%; background:transparent; }
+.buscador input::placeholder { color:var(--texto-dimmer); }
+
+.filtros-wrap { max-width:1000px; margin:16px auto 0; padding:0 20px; }
+.filtros-wrap h2 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--texto-dimmer); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px; }
+.filtros { display:flex; gap:10px; flex-wrap:wrap; }
+.filtro-btn { padding:8px 16px; border-radius:30px; border:2px solid var(--borde); background:#fff; font-size:12px; font-weight:700; cursor:pointer; color:var(--texto-dim); transition:all .2s; font-family:'Inter',sans-serif; }
+.filtro-btn:hover { border-color:var(--excel); color:var(--excel); }
+.filtro-btn.activo { background:var(--excel); border-color:var(--excel); color:#fff; }
+
+.section { max-width:1000px; margin:0 auto; padding:36px 20px 48px; }
+
+.categoria { margin-bottom:32px; border-radius:20px; overflow:hidden; border:2px solid var(--borde); background:#fff; }
+.categoria-header { display:flex; align-items:center; gap:12px; padding:18px 24px; background:var(--cat-color); color:#fff; }
+.categoria-header .emoji { font-size:24px; }
+.categoria-header h3 { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; }
+.categoria-header .count { margin-left:auto; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:20px; font-size:12px; font-weight:700; }
+
+.atajos-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:var(--borde); }
+.atajo-item { background:#fff; padding:14px 20px; display:flex; align-items:center; gap:14px; transition:background .15s; }
+.atajo-item:hover { background:#f0faf4; }
+.atajo-item.oculto { display:none; }
+
+.kbd-group { display:flex; align-items:center; gap:4px; flex-shrink:0; min-width:130px; flex-wrap:wrap; }
+kbd { display:inline-flex; align-items:center; justify-content:center; background:#fff; border:2px solid var(--borde); border-bottom:3px solid #c5cfe0; border-radius:7px; padding:4px 9px; font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:var(--texto); min-width:28px; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,0.08); white-space:nowrap; }
+.plus { font-size:12px; color:var(--texto-dimmer); font-weight:700; }
+.atajo-accion { font-size:13px; color:var(--texto-dim); line-height:1.4; flex:1; }
+.atajo-accion strong { color:var(--texto); font-weight:600; display:block; }
+
+.sin-resultados { text-align:center; padding:40px; color:var(--texto-dimmer); font-size:15px; display:none; }
+.sin-resultados .emoji { font-size:40px; display:block; margin-bottom:10px; }
+
+.tip-box { background:linear-gradient(135deg,rgba(33,115,70,0.07),rgba(33,115,70,0.02)); border:2px solid rgba(33,115,70,0.18); border-radius:16px; padding:20px 24px; display:flex; gap:14px; align-items:flex-start; }
+.tip-box .tip-icon { font-size:28px; flex-shrink:0; }
+.tip-box h4 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--excel); margin-bottom:4px; }
+.tip-box p { font-size:13px; color:var(--texto-dim); line-height:1.6; }
+
+footer { background:var(--texto); text-align:center; padding:24px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.8; margin-top:48px; }
+footer span { color:#fff; font-weight:700; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+@media(max-width:640px){
+  .topbar { flex-direction:column; align-items:flex-start; }
+  .stats { gap:12px; }
+  .atajos-grid { grid-template-columns:1fr; }
+  .kbd-group { min-width:110px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="sena-logo">SENA</div>
+    <div>
+      <div class="topbar-brand">Atajos de Teclado · Excel 365</div>
+      <div class="topbar-sub">Prevención y Control Ambiental · Ficha 3410069</div>
+    </div>
+  </div>
+  <div class="topbar-nav">
+    <a href="#archivo">Archivo</a>
+    <a href="#formato">Formato</a>
+    <a href="#edicion">Edición</a>
+    <a href="#celdas">Celdas</a>
+    <a href="#formulas">Fórmulas</a>
+    <a href="#navegacion">Navegación</a>
+    <a href="#seleccion">Selección</a>
+    <a href="#hoja">Hoja</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">⌨️ Microsoft Excel 365</div>
+  <h1>Atajos de Teclado<br><span>Excel 365</span></h1>
+  <p class="hero-desc">Trabaja con hojas de cálculo a velocidad profesional. Estos atajos te ahorrarán horas de trabajo cada semana.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-num">46</span><span class="stat-label">Atajos</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Categorías</span></div>
+    <div class="stat"><span class="stat-num">📊</span><span class="stat-label">Datos ágiles</span></div>
+  </div>
+</div>
+
+<div class="buscador-wrap reveal">
+  <div class="buscador">
+    <span>🔍</span>
+    <input type="text" id="buscador" placeholder="Busca un atajo... ej: suma, filtro, celda, fórmula">
+  </div>
+</div>
+
+<div class="filtros-wrap reveal">
+  <h2>Filtrar por categoría</h2>
+  <div class="filtros">
+    <button class="filtro-btn activo" data-cat="todos">✅ Todos</button>
+    <button class="filtro-btn" data-cat="archivo">📁 Archivo</button>
+    <button class="filtro-btn" data-cat="formato">✏️ Formato</button>
+    <button class="filtro-btn" data-cat="edicion">✂️ Edición</button>
+    <button class="filtro-btn" data-cat="celdas">🔲 Celdas</button>
+    <button class="filtro-btn" data-cat="formulas">🧮 Fórmulas</button>
+    <button class="filtro-btn" data-cat="navegacion">🧭 Navegación</button>
+    <button class="filtro-btn" data-cat="seleccion">🖱️ Selección</button>
+    <button class="filtro-btn" data-cat="hoja">📋 Hoja</button>
+  </div>
+</div>
+
+<div class="section">
+
+  <div class="sin-resultados" id="sinResultados">
+    <span class="emoji">🤔</span>
+    No se encontraron atajos para tu búsqueda.
+  </div>
+
+  <!-- ARCHIVO -->
+  <div class="categoria reveal" data-cat="archivo" id="archivo" style="--cat-color:var(--cat1);">
+    <div class="categoria-header"><span class="emoji">📁</span><h3>Archivo y Libro</h3><span class="count">6 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="nuevo libro archivo excel">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>U</kbd></div>
+        <div class="atajo-accion"><strong>Nuevo libro</strong>Crea un libro de Excel nuevo en blanco</div>
+      </div>
+      <div class="atajo-item" data-texto="abrir archivo libro excel">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>F12</kbd></div>
+        <div class="atajo-accion"><strong>Abrir libro</strong>Abre el cuadro de diálogo para abrir un archivo existente</div>
+      </div>
+      <div class="atajo-item" data-texto="guardar libro archivo excel">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>G</kbd></div>
+        <div class="atajo-accion"><strong>Guardar</strong>Guarda el libro de Excel actual (versión en español)</div>
+      </div>
+      <div class="atajo-item" data-texto="guardar libro archivo excel windows">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></div>
+        <div class="atajo-accion"><strong>Guardar (inglés)</strong>Equivalente a Guardar en teclados con configuración en inglés</div>
+      </div>
+      <div class="atajo-item" data-texto="guardar como nombre formato xlsx csv">
+        <div class="kbd-group"><kbd>F12</kbd></div>
+        <div class="atajo-accion"><strong>Guardar como</strong>Guarda con nuevo nombre o formato (XLSX, CSV, PDF…)</div>
+      </div>
+      <div class="atajo-item" data-texto="imprimir hoja libro">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>P</kbd></div>
+        <div class="atajo-accion"><strong>Imprimir</strong>Abre el panel de impresión de la hoja activa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMATO -->
+  <div class="categoria reveal" data-cat="formato" id="formato" style="--cat-color:var(--cat2);">
+    <div class="categoria-header"><span class="emoji">✏️</span><h3>Formato de Celdas</h3><span class="count">9 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="negrita bold texto celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>N</kbd></div>
+        <div class="atajo-accion"><strong>Negrita</strong>Aplica o quita el formato negrita al contenido seleccionado</div>
+      </div>
+      <div class="atajo-item" data-texto="cursiva itálica texto celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>K</kbd></div>
+        <div class="atajo-accion"><strong>Cursiva</strong>Aplica o quita el formato cursiva al contenido seleccionado</div>
+      </div>
+      <div class="atajo-item" data-texto="subrayado underline texto celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></div>
+        <div class="atajo-accion"><strong>Subrayado</strong>Aplica o quita el subrayado al contenido (en Excel 365, no guarda)</div>
+      </div>
+      <div class="atajo-item" data-texto="tachado strikethrough texto celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>5</kbd></div>
+        <div class="atajo-accion"><strong>Tachado</strong>Aplica o quita el formato de texto tachado</div>
+      </div>
+      <div class="atajo-item" data-texto="formato celdas dialog ventana">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>1</kbd></div>
+        <div class="atajo-accion"><strong>Formato de celdas</strong>Abre la ventana completa de formato (número, fuente, bordes, relleno…)</div>
+      </div>
+      <div class="atajo-item" data-texto="formato moneda dinero pesos dólares">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>4</kbd></div>
+        <div class="atajo-accion"><strong>Formato moneda</strong>Aplica formato de moneda con dos decimales (tecla 4 / $)</div>
+      </div>
+      <div class="atajo-item" data-texto="formato porcentaje % tanto porciento">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>5</kbd></div>
+        <div class="atajo-accion"><strong>Formato porcentaje</strong>Aplica formato de porcentaje sin decimales (tecla 5 / %)</div>
+      </div>
+      <div class="atajo-item" data-texto="formato fecha date dia mes año">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>3</kbd></div>
+        <div class="atajo-accion"><strong>Formato fecha</strong>Aplica formato de fecha (dd/mmm/aa) (tecla 3 / #)</div>
+      </div>
+      <div class="atajo-item" data-texto="bordes quitar limpiar formato celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>_</kbd></div>
+        <div class="atajo-accion"><strong>Quitar bordes</strong>Elimina todos los bordes de las celdas seleccionadas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDICIÓN -->
+  <div class="categoria reveal" data-cat="edicion" id="edicion" style="--cat-color:var(--cat3);">
+    <div class="categoria-header"><span class="emoji">✂️</span><h3>Edición</h3><span class="count">9 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="copiar copy celda rango">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>C</kbd></div>
+        <div class="atajo-accion"><strong>Copiar</strong>Copia las celdas o el rango seleccionado al portapapeles</div>
+      </div>
+      <div class="atajo-item" data-texto="pegar paste portapapeles celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>V</kbd></div>
+        <div class="atajo-accion"><strong>Pegar</strong>Pega el contenido del portapapeles en la celda activa</div>
+      </div>
+      <div class="atajo-item" data-texto="pegado especial valores formato transponer">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>V</kbd></div>
+        <div class="atajo-accion"><strong>Pegado especial</strong>Abre el diálogo para pegar solo valores, formatos, transponer, etc.</div>
+      </div>
+      <div class="atajo-item" data-texto="cortar cut mover celda rango">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>X</kbd></div>
+        <div class="atajo-accion"><strong>Cortar</strong>Corta las celdas o el rango seleccionado</div>
+      </div>
+      <div class="atajo-item" data-texto="deshacer undo revertir acción">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></div>
+        <div class="atajo-accion"><strong>Deshacer</strong>Revierte la última acción realizada</div>
+      </div>
+      <div class="atajo-item" data-texto="rehacer redo repetir acción">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></div>
+        <div class="atajo-accion"><strong>Rehacer / Repetir</strong>Rehace la acción deshecha o repite la última acción</div>
+      </div>
+      <div class="atajo-item" data-texto="buscar find texto dato celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>B</kbd></div>
+        <div class="atajo-accion"><strong>Buscar</strong>Abre el panel de búsqueda en la hoja activa</div>
+      </div>
+      <div class="atajo-item" data-texto="buscar reemplazar replace texto dato">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>L</kbd></div>
+        <div class="atajo-accion"><strong>Buscar y reemplazar</strong>Busca y reemplaza valores en toda la hoja o libro</div>
+      </div>
+      <div class="atajo-item" data-texto="editar celda modificar contenido F2">
+        <div class="kbd-group"><kbd>F2</kbd></div>
+        <div class="atajo-accion"><strong>Editar celda</strong>Entra en modo edición de la celda activa (mueve el cursor al final)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELDAS -->
+  <div class="categoria reveal" data-cat="celdas" id="celdas" style="--cat-color:var(--cat4);">
+    <div class="categoria-header"><span class="emoji">🔲</span><h3>Manejo de Celdas</h3><span class="count">6 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="insertar fila columna celda agregar">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>+</kbd></div>
+        <div class="atajo-accion"><strong>Insertar fila / columna</strong>Inserta una fila o columna en la posición seleccionada</div>
+      </div>
+      <div class="atajo-item" data-texto="eliminar fila columna celda borrar">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>-</kbd></div>
+        <div class="atajo-accion"><strong>Eliminar fila / columna</strong>Elimina la fila o columna seleccionada</div>
+      </div>
+      <div class="atajo-item" data-texto="insertar fecha hoy actual celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>;</kbd></div>
+        <div class="atajo-accion"><strong>Insertar fecha actual</strong>Escribe la fecha de hoy en la celda activa</div>
+      </div>
+      <div class="atajo-item" data-texto="insertar hora tiempo actual celda">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>;</kbd></div>
+        <div class="atajo-accion"><strong>Insertar hora actual</strong>Escribe la hora actual en la celda activa</div>
+      </div>
+      <div class="atajo-item" data-texto="rellenar abajo copiar celda superior contenido">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>D</kbd></div>
+        <div class="atajo-accion"><strong>Rellenar hacia abajo</strong>Copia el contenido de la celda superior al rango seleccionado</div>
+      </div>
+      <div class="atajo-item" data-texto="rellenar derecha copiar celda izquierda contenido">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></div>
+        <div class="atajo-accion"><strong>Rellenar hacia la derecha</strong>Copia el contenido de la celda izquierda al rango seleccionado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FÓRMULAS -->
+  <div class="categoria reveal" data-cat="formulas" id="formulas" style="--cat-color:var(--cat5);">
+    <div class="categoria-header"><span class="emoji">🧮</span><h3>Fórmulas y Funciones</h3><span class="count">6 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="autosuma suma rápida total columna fila">
+        <div class="kbd-group"><kbd>Alt</kbd><span class="plus">+</span><kbd>=</kbd></div>
+        <div class="atajo-accion"><strong>Autosuma</strong>Inserta automáticamente la función SUMA para el rango adyacente</div>
+      </div>
+      <div class="atajo-item" data-texto="insertar función asistente fx barra fórmulas">
+        <div class="kbd-group"><kbd>Shift</kbd><span class="plus">+</span><kbd>F3</kbd></div>
+        <div class="atajo-accion"><strong>Insertar función</strong>Abre el asistente para buscar e insertar cualquier función</div>
+      </div>
+      <div class="atajo-item" data-texto="mostrar fórmulas ver texto celdas todas">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>`</kbd></div>
+        <div class="atajo-accion"><strong>Mostrar / ocultar fórmulas</strong>Alterna entre ver resultados y ver las fórmulas de las celdas</div>
+      </div>
+      <div class="atajo-item" data-texto="calcular recalcular actualizar fórmulas F9">
+        <div class="kbd-group"><kbd>F9</kbd></div>
+        <div class="atajo-accion"><strong>Calcular ahora</strong>Recalcula todas las fórmulas del libro</div>
+      </div>
+      <div class="atajo-item" data-texto="referencia absoluta relativa dólar F4 bloquear">
+        <div class="kbd-group"><kbd>F4</kbd></div>
+        <div class="atajo-accion"><strong>Alternar referencia absoluta</strong>Cambia entre $A$1, A$1, $A1 y A1 al escribir fórmulas</div>
+      </div>
+      <div class="atajo-item" data-texto="aceptar fórmula intro celda confirmar">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Enter</kbd></div>
+        <div class="atajo-accion"><strong>Confirmar en varias celdas</strong>Ingresa la misma fórmula en todas las celdas del rango seleccionado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <div class="categoria reveal" data-cat="navegacion" id="navegacion" style="--cat-color:var(--cat6);">
+    <div class="categoria-header"><span class="emoji">🧭</span><h3>Navegación en la Hoja</h3><span class="count">7 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="inicio fila celda A columna principio">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Inicio</kbd></div>
+        <div class="atajo-accion"><strong>Ir a la celda A1</strong>Mueve el cursor a la primera celda del libro</div>
+      </div>
+      <div class="atajo-item" data-texto="fin última celda datos final">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Fin</kbd></div>
+        <div class="atajo-accion"><strong>Ir a la última celda con datos</strong>Salta a la última celda del área de datos utilizada</div>
+      </div>
+      <div class="atajo-item" data-texto="ir celda específica referencia dirección cuadro nombre">
+        <div class="kbd-group"><kbd>F5</kbd></div>
+        <div class="atajo-accion"><strong>Ir a...</strong>Abre el cuadro "Ir a" para saltar a cualquier celda o rango (ej: B50, C10:D20)</div>
+      </div>
+      <div class="atajo-item" data-texto="cuadro nombre celda dirección referencia">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>G</kbd></div>
+        <div class="atajo-accion"><strong>Ir a... (alternativo)</strong>Segunda opción para abrir el cuadro "Ir a" en Excel Windows</div>
+      </div>
+      <div class="atajo-item" data-texto="borde datos saltar rango columna fila extremo">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>→ ← ↑ ↓</kbd></div>
+        <div class="atajo-accion"><strong>Saltar al extremo del rango</strong>Salta a la última celda con datos en la dirección indicada</div>
+      </div>
+      <div class="atajo-item" data-texto="siguiente hoja pestaña tab avanzar">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Av Pág</kbd></div>
+        <div class="atajo-accion"><strong>Siguiente hoja</strong>Se mueve a la hoja (pestaña) siguiente del libro</div>
+      </div>
+      <div class="atajo-item" data-texto="anterior hoja pestaña retroceder regresar">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Re Pág</kbd></div>
+        <div class="atajo-accion"><strong>Hoja anterior</strong>Se mueve a la hoja (pestaña) anterior del libro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECCIÓN -->
+  <div class="categoria reveal" data-cat="seleccion" id="seleccion" style="--cat-color:var(--cat7);">
+    <div class="categoria-header"><span class="emoji">🖱️</span><h3>Selección de Rangos</h3><span class="count">4 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="seleccionar todo hoja celdas">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>E</kbd></div>
+        <div class="atajo-accion"><strong>Seleccionar todo</strong>Selecciona todas las celdas de la hoja activa</div>
+      </div>
+      <div class="atajo-item" data-texto="seleccionar columna completa entera">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Barra espaciadora</kbd></div>
+        <div class="atajo-accion"><strong>Seleccionar columna completa</strong>Selecciona la columna entera de la celda activa</div>
+      </div>
+      <div class="atajo-item" data-texto="seleccionar fila completa entera">
+        <div class="kbd-group"><kbd>Shift</kbd><span class="plus">+</span><kbd>Barra espaciadora</kbd></div>
+        <div class="atajo-accion"><strong>Seleccionar fila completa</strong>Selecciona la fila entera de la celda activa</div>
+      </div>
+      <div class="atajo-item" data-texto="extender selección rango ampliar shift flechas">
+        <div class="kbd-group"><kbd>Shift</kbd><span class="plus">+</span><kbd>↑↓←→</kbd></div>
+        <div class="atajo-accion"><strong>Extender la selección</strong>Amplía la selección celda por celda en la dirección indicada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOJA -->
+  <div class="categoria reveal" data-cat="hoja" id="hoja" style="--cat-color:var(--cat8);">
+    <div class="categoria-header"><span class="emoji">📋</span><h3>Manejo de Hojas</h3><span class="count">6 atajos</span></div>
+    <div class="atajos-grid">
+      <div class="atajo-item" data-texto="nueva hoja insertar pestaña agregar">
+        <div class="kbd-group"><kbd>Shift</kbd><span class="plus">+</span><kbd>F11</kbd></div>
+        <div class="atajo-accion"><strong>Insertar nueva hoja</strong>Agrega una nueva hoja al libro de trabajo (antes de la hoja activa)</div>
+      </div>
+      <div class="atajo-item" data-texto="renombrar hoja nombre pestaña editar">
+        <div class="kbd-group"><kbd>Alt</kbd><span class="plus">+</span><kbd>Inicio</kbd><span class="plus">→</span><kbd>R</kbd></div>
+        <div class="atajo-accion"><strong>Renombrar hoja</strong>Secuencia de cinta para renombrar la pestaña activa (Alt, Inicio, O, R)</div>
+      </div>
+      <div class="atajo-item" data-texto="ocultar filas columnas hide">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>9</kbd></div>
+        <div class="atajo-accion"><strong>Ocultar filas</strong>Oculta las filas seleccionadas</div>
+      </div>
+      <div class="atajo-item" data-texto="mostrar filas ocultas volver visible">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>9</kbd></div>
+        <div class="atajo-accion"><strong>Mostrar filas ocultas</strong>Vuelve a mostrar las filas ocultas del rango seleccionado</div>
+      </div>
+      <div class="atajo-item" data-texto="ocultar columnas hide">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>0</kbd></div>
+        <div class="atajo-accion"><strong>Ocultar columnas</strong>Oculta las columnas seleccionadas</div>
+      </div>
+      <div class="atajo-item" data-texto="mostrar columnas ocultas visible">
+        <div class="kbd-group"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>0</kbd></div>
+        <div class="atajo-accion"><strong>Mostrar columnas ocultas</strong>Vuelve a mostrar las columnas ocultas del rango seleccionado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIP -->
+  <div class="tip-box reveal">
+    <span class="tip-icon">💡</span>
+    <div>
+      <h4>Los 6 atajos más productivos en Excel 365 Windows</h4>
+      <p>Empieza por estos y notarás la diferencia desde el primer día:
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">Alt + =</kbd> para Autosuma instantánea,
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">Ctrl + 1</kbd> para abrir Formato de celdas,
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">F4</kbd> para fijar referencias absolutas ($A$1),
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">Ctrl + `</kbd> para ver todas las fórmulas,
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">Ctrl + Fin</kbd> para saltar al último dato y
+        <kbd style="background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 6px;font-size:11px;">Ctrl + Alt + V</kbd> para Pegado especial (solo valores). Todos verificados para Windows 10/11 con Excel 365 en español.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Atajos de Teclado · <span>Excel 365</span></p>
+  <p>Centro Agroempresarial y Desarrollo Pecuario del Huila · <span>SENA</span></p>
+  <p>Instructor: <span>Julián Andrés Trujillo Morales</span> · Ficha <span>3410069</span></p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold:0.05 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+
+  const filtros = document.querySelectorAll('.filtro-btn');
+  const categorias = document.querySelectorAll('.categoria');
+
+  filtros.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filtros.forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      const cat = btn.dataset.cat;
+      categorias.forEach(c => { c.style.display = (cat==='todos' || c.dataset.cat===cat) ? '' : 'none'; });
+      document.getElementById('buscador').value = '';
+      mostrarTodos();
+    });
+  });
+
+  function mostrarTodos(){
+    document.querySelectorAll('.atajo-item').forEach(i => i.classList.remove('oculto'));
+    document.getElementById('sinResultados').style.display = 'none';
+    const catActiva = document.querySelector('.filtro-btn.activo').dataset.cat;
+    categorias.forEach(c => { c.style.display = (catActiva==='todos' || c.dataset.cat===catActiva) ? '' : 'none'; });
+  }
+
+  document.getElementById('buscador').addEventListener('input', function(){
+    const q = this.value.toLowerCase().trim();
+    filtros.forEach(b => b.classList.remove('activo'));
+    document.querySelector('[data-cat="todos"]').classList.add('activo');
+    if(!q){ mostrarTodos(); return; }
+    let hay = false;
+    categorias.forEach(cat => {
+      let tiene = false;
+      cat.querySelectorAll('.atajo-item').forEach(item => {
+        const txt = (item.dataset.texto+' '+item.innerText).toLowerCase();
+        const ok = txt.includes(q);
+        item.classList.toggle('oculto', !ok);
+        if(ok){ tiene=true; hay=true; }
+      });
+      cat.style.display = tiene ? '' : 'none';
+    });
+    document.getElementById('sinResultados').style.display = hay ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>
